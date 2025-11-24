@@ -41,7 +41,7 @@ durabilities = {
     "minecraft:leather_helmet": [helmet_indicator,55],
 
 }
-text1 = Hud.add_text("TEST",x=0,y=0,anchorX=.5,anchorY=.5,justifyX=0,justifyY=0,scale=.5,screens=["None"])
+text1 = Hud.add_text("TEST",x=0,y=0,anchorX=.5,anchorY=.5,justifyX=0,justifyY=0,scale=.5,screens=["None"],alpha=255)
 
 
 inv = ""
@@ -97,7 +97,9 @@ while True:
                     damage = 0
                 helmet = f"{name}:{max-damage}"
         #echo(inv)
-        
-        Hud.update_text(text1,text=f"{boots} | {pants} | {chestplate} | {helmet}",x=0,y=-10,anchorX=0,anchorY=1,justifyX=-1,justifyY=-1,scale=.75,alpha=255,color=(255,255,255))
+        try:
+            Hud.update_text(text1,text=f"{boots} | {pants} | {chestplate} | {helmet}",x=0,y=-10,anchorX=0,anchorY=1,justifyX=-1,justifyY=-1,scale=.75,alpha=255,color=(255,255,255))
+        except:
+            pass
     
     sleep(.1)
