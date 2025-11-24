@@ -1,0 +1,113 @@
+from minescript import *
+from minescript_plus import *
+import sys
+import os
+import pathlib
+import importlib
+import threading
+import time
+"""
+REQS: No print() -> ms.echo()
+
+"""
+
+# Todo list :)
+
+# ability to "YANK" control from other scripts with only your "screen" ?
+# polling for useful info so that the other scripts don't need it
+
+
+# notificaiton widget
+# crosshair health indicator
+# crosshair radar
+# show scripts
+# nearby players
+# armor HP
+# total inventory counts
+# coords / biome
+# item counter
+# all inventory widget
+# clock widget
+# FPS / stats widget
+# ping graph widget?
+# top compass widget
+# F3 type widget
+# "Find your Bed" widget
+# Uptime Widget
+# IGT widget
+# Worldinfo Widget
+
+
+
+
+ospath = os.getcwd()
+
+
+
+class widget:
+    def __init__(self):
+        echo("yepers")
+
+
+
+
+def makelibthread(lib:str):
+    modules.append(importlib.import_module(lib))
+
+
+if "minescript\\minecraft" in ospath:
+    pass
+else:
+    ospath = ospath+"\\minescript"
+
+uifolder = ospath+"\\ui_container"
+newinstall = True
+
+scripts = []
+
+if not os.path.exists(uifolder):
+    os.makedirs(uifolder)
+else:
+    newinstall = False
+
+if newinstall:
+    echo(f"New Install detected! Make sure to place a python script into {uifolder}!")
+else:
+    
+
+    sys.path.insert(1,uifolder)
+    modules = []
+    for i in os.listdir(uifolder):
+        
+        lib = i.rstrip(".py")
+        if "__" not in lib:
+            scripts.append(lib)
+    if __name__ == "__main__":
+        time.sleep(.2) # loading in on servers
+        for lib in scripts:
+
+
+                func = (makelibthread)
+                threading.Thread(target=func,daemon=True,args=[lib]).start()
+                time.sleep(.1)
+
+
+def keythread():
+    global toggled
+    with EventQueue() as event_queue:
+        event_queue.register_key_listener()
+        
+        while True: 
+            event = event_queue.get()
+            if event.key == 71 and event.action == 1 and screen_name() == None:
+                toggled = not toggled
+                echo(toggled)
+                Hud.show_hud(toggled)
+
+thread = threading.Thread(target=keythread)
+thread.daemon = True
+
+
+if __name__ == "__main__":
+    toggled = True
+    thread.run()
