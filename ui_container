@@ -89,7 +89,7 @@ else:
 
                 func = (makelibthread)
                 threading.Thread(target=func,daemon=True,args=[lib]).start()
-                time.sleep(.1)
+                
 
 
 def keythread():
