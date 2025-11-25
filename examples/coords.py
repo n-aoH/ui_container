@@ -15,7 +15,7 @@ X = 0
 Y = -20
 
 
-text1 = Hud.add_text("TEST",x=0,y=0,anchorX=.5,anchorY=.5,justifyX=0,justifyY=0,scale=1,screens=["None"],alpha=0)
+text1 = Hud.add_text("TEST",x=0,y=0,anchorX=.5,anchorY=.5,justifyX=0,justifyY=0,scale=1,screens=["None"],alpha=255)
 
 toggle = 0
 
